@@ -1,9 +1,9 @@
 const axios=require("axios")
-const key="9802aeacb9704950a603fd818f5f32f7"
+const key="<FACE API KEY>"
 let Id1="";
-let foto= 'https://pbs.twimg.com/profile_images/798967560620408835/W6TIC3qB.jpg';
-let grupo='1'
-let candidatos='1'
+let picture= 'https://pbs.twimg.com/profile_images/798967560620408835/W6TIC3qB.jpg';
+let group='1'
+let candidates='1'
 let confidence="0.5"
 let mode="matchFace"
 
@@ -33,16 +33,16 @@ var person = axios.create({
 
 
 
-detect.post('/',`{url:"${foto}"}`)
+detect.post('/',`{url:"${picture}"}`)
 .then(response => {
 	Id1=response.data[0].faceId;
 	console.log("ID:"+Id1)
-	return identify.post('/',`{personGroupId:'${grupo}',faceIds:['${Id1}'],maxNumOfCandidatesReturned:'${candidatos}',confidenceThreshold:'0.5'}`);
+	return identify.post('/',`{personGroupId:'${group}',faceIds:['${Id1}'],maxNumOfCandidatesReturned:'${candidates}',confidenceThreshold:'${confidence}'}`);
 	
 })
 .then (response=> {
 	personId=response.data[0].candidates[0].personId;
-	let peticion = '/' + grupo + '/persons/' + personId;
+	let peticion = '/' + group + '/persons/' + personId;
 	return person.get(peticion);
 
 }).then(response => {

@@ -1,7 +1,7 @@
 const axios=require("axios")
 const key="<FACE API KEY>"
 let Id1="";
-let picture= 'https://pbs.twimg.com/profile_images/798967560620408835/W6TIC3qB.jpg';
+let picture= 'PICTURE URL';
 let group='1'
 let candidates='1'
 let confidence="0.5"
